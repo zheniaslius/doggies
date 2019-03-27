@@ -3,7 +3,9 @@ import {
   createAppContainer
 } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import MatIcon from 'react-native-vector-icons/MaterialIcons';
+import AntIcon from 'react-native-vector-icons/AntDesign';
 import Home from './components/Home/Home';
 import Profile from './components/Profile/Profile';
 import Camera from './components/Camera/Camera';
@@ -12,25 +14,37 @@ const Navigator = createMaterialBottomTabNavigator({
   Home: { 
     screen: Home,
     navigationOptions: {
-      tabBarIcon: ({tintColor}) => (
-        <Icon name="home" color={tintColor} size={32} />
+      tabBarIcon: ({focused}) => (
+        <MaterialIcon
+          name={`home${focused ? '' : '-outline'}`}
+          size={26} />
       )
     }
   },
   Camera: { 
     screen: Camera,
     navigationOptions: {
-      tabBarIcon: ({tintColor}) => (
-        <Icon name="camera-alt" color={tintColor} size={32} />
+      tabBarIcon: ({focused}) => (
+        <AntIcon
+        name={`camera${focused ? '' : 'o'}`}
+        size={26} />
       )
     }
   },
-  Profile: { screen: Profile },
+  Profile: {
+    screen: Profile,
+    navigationOptions: {
+      tabBarIcon: ({focused}) => (
+        <MatIcon
+          name={`person${focused ? '' : '-outline'}`}
+          size={26} />
+      )
+    }
+   },
 }, {
   initialRouteName: 'Home',
-  activeColor: 'black',
   barStyle: {
-    // backgroundColor: 'transparent'
+    backgroundColor: 'white'
   },
   labeled: false
 });
