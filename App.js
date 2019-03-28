@@ -6,9 +6,11 @@ import { createMaterialBottomTabNavigator } from 'react-navigation-material-bott
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MatIcon from 'react-native-vector-icons/MaterialIcons';
 import AntIcon from 'react-native-vector-icons/AntDesign';
+import { Font } from 'expo';
 import Home from './components/Home/Home';
 import Profile from './components/Profile/Profile';
 import Camera from './components/Camera/Camera';
+import { GlobalStyle } from './components/shared/shared';
 
 const Navigator = createMaterialBottomTabNavigator({
   Home: { 
@@ -49,6 +51,26 @@ const Navigator = createMaterialBottomTabNavigator({
   labeled: false
 });
 
-const App = createAppContainer(Navigator)
+const AppNavigator = createAppContainer(Navigator)
 
+class App extends React.Component { 
+  constructor(props) {
+    super(props);
+    this.state = { fontLoaded: false };
+  }
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      "Open Sans": require('./assets/fonts/OpenSans-Regular.ttf'),
+    });
+
+    this.setState({ fontLoaded: true });
+  }
+
+  render() {
+    return this.state.fontLoaded ?
+      <AppNavigator />
+      : null;
+  }
+}
 export default App;
