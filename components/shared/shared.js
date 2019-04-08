@@ -14,3 +14,8 @@ export const Heading = styled(GlobalText)`
     font-weight: bold;
     margin-bottom: 15;
 `;
+
+export const Heading2 = styled(GlobalText)`
+    font-size: 26px;
+    font-weight: bold;
+`;

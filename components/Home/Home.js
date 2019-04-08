@@ -1,9 +1,16 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { Container, Heading } from '../shared/shared';
-import Carousel from 'react-native-snap-carousel';
-import { itemWidth, sliderWidth, slideHeight,
-Card, Name, Breed } from './Home.styles';
+import { ScrollView, Dimensions } from 'react-native';
+import { 
+  createStackNavigator
+} from 'react-navigation';
+import { createAppContainer } from 'react-navigation';
+
+import { Container } from '../shared/shared';
+import Recent from './Recent/Recent';
+import Details from "../Details";
+import All from './All/All';
+
+const { height: viewportHeight } = Dimensions.get('window');
 
 const entries = [
   {
@@ -20,36 +27,46 @@ const entries = [
     name: 'Gusya',
     breed: 'Mau',
     photo: 'https://images.unsplash.com/photo-1521673461164-de300ebcfb17?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
+  },
+  {
+    name: 'Gusya',
+    breed: 'Mau',
+    photo: 'https://images.unsplash.com/photo-1521673461164-de300ebcfb17?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
+  },
+  {
+    name: 'Gusya',
+    breed: 'Mau',
+    photo: 'https://images.unsplash.com/photo-1521673461164-de300ebcfb17?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
   }
 ]
 
 class Home extends React.Component {
-  _renderItem ({item, index}) {
-    return (
-        <Card source={{uri: item.photo}} style={{height: slideHeight, marginRight: 20}}>
-          <Breed>{ item.breed }</Breed>
-          <Name>{ item.name }</Name>
-        </Card>
-    );
-  }
-
     render() {
       return (
-        <Container>
-          <Heading>Недавние</Heading>
-          <Carousel
-            ref={(c) => { this._carousel = c; }}
-            data={entries}
-            renderItem={this._renderItem}
-            sliderWidth={sliderWidth+15}
-            itemWidth={itemWidth}
-            inactiveSlideOpacity={1}
-            inactiveSlideScale={1}
-            contentContainerCustomStyle={{marginLeft:'-22%'}}
-          />
-        </Container>
+        <>
+          <ScrollView style={{height: viewportHeight}}>
+            <Container>
+              <Recent entries={entries}/>
+              <All entries={entries}/>
+            </Container>
+          </ScrollView>
+        </>
       );
     }
   }
   
-export default Home;
+const Navigator = createStackNavigator({
+  Home: {
+    screen: Home
+  },
+  Details: {
+    screen: Details
+  }
+}, {
+  initialRouteName: 'Home',
+  headerMode: 'none'
+})
+
+const StackNavigator = createAppContainer(Navigator);
+
+export default StackNavigator;
