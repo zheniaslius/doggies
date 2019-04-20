@@ -3,11 +3,10 @@ import { TouchableNativeFeedback } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import { withNavigation } from 'react-navigation';
 
-import { Heading } from '../../shared/shared';
+import { Heading, Name } from '../../shared/shared';
 import {
     Card,
     Breed,
-    Name,
     itemWidth,
     sliderWidth,
     slideHeight

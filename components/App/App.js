@@ -7,9 +7,12 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import MatIcon from 'react-native-vector-icons/MaterialIcons';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 import { Font } from 'expo';
-import Home from './components/Home/Home';
-import Profile from './components/Profile/Profile';
-import Camera from './components/Camera/Camera';
+import { ThemeProvider } from 'styled-components';
+
+import Home from '../Home';
+import Profile from '../Profile';
+import CameraComponent from '../Camera';
+import theme from './theme';
 
 const Navigator = createMaterialBottomTabNavigator({
   Home: { 
@@ -23,7 +26,7 @@ const Navigator = createMaterialBottomTabNavigator({
     }
   },
   Camera: { 
-    screen: Camera,
+    screen: CameraComponent,
     navigationOptions: {
       tabBarIcon: ({focused}) => (
         <AntIcon
@@ -53,14 +56,14 @@ const Navigator = createMaterialBottomTabNavigator({
 const AppNavigator = createAppContainer(Navigator);
 
 class App extends React.Component { 
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = { fontLoaded: false };
   }
 
   async componentDidMount() {
     await Font.loadAsync({
-      "Open Sans": require('./assets/fonts/OpenSans-Regular.ttf'),
+      "Open Sans": require('../../assets/fonts/OpenSans-Regular.ttf'),
     });
 
     this.setState({ fontLoaded: true });
@@ -68,8 +71,13 @@ class App extends React.Component {
 
   render() {
     return this.state.fontLoaded ?
-      <AppNavigator />
+      (
+        <ThemeProvider theme={theme}>
+          <AppNavigator />
+        </ThemeProvider> 
+      )
       : null;
   }
 }
+
 export default App;

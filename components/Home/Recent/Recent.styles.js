@@ -24,12 +24,6 @@ export const Card = styled(ImageBackground)`
     padding: 15px 20px;
 `;
 
-export const Name = styled(GlobalText)`
-    font-size: 32;
-    font-weight: bold;
-    color: white;
-`;
-
 export const Breed = styled(GlobalText)`
     font-size: 18;
     color: white;

@@ -11,15 +11,19 @@ export const Wrapper = styled(View)`
 `;
 
 export const Card = styled(ImageBackground)`
-    border-radius: 15;
+    border-radius: 10;
     overflow: hidden;
     height: 100px;
     flex: 1;
     margin: 0 8px;
     justify-content: flex-end;
+    elevation: 2;
 `;
 
-export const Name = styled(Text)``;
+export const Name = styled(Text)`
+    color: ${props => props.theme.black};
+    font-weight: 600;
+`;
 
 export const Content = styled(View)`
     margin-top: 10px;

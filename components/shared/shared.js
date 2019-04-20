@@ -13,9 +13,17 @@ export const Heading = styled(GlobalText)`
     font-size: 36;
     font-weight: bold;
     margin-bottom: 15;
+    color: ${props => props.theme.blackDark};
 `;
 
 export const Heading2 = styled(GlobalText)`
     font-size: 26px;
     font-weight: bold;
+    color: ${props => props.theme.blackDark};
+`;
+
+export const Name = styled(GlobalText)`
+    font-size: 32;
+    font-weight: bold;
+    color: white;
 `;

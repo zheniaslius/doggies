@@ -1,9 +1,6 @@
 import React from 'react';
 import { ScrollView, Dimensions } from 'react-native';
-import { 
-  createStackNavigator
-} from 'react-navigation';
-import { createAppContainer } from 'react-navigation';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import { Container } from '../shared/shared';
 import Recent from './Recent/Recent';
@@ -29,14 +26,19 @@ const entries = [
     photo: 'https://images.unsplash.com/photo-1521673461164-de300ebcfb17?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
   },
   {
-    name: 'Gusya',
+    name: 'Bobby',
     breed: 'Mau',
-    photo: 'https://images.unsplash.com/photo-1521673461164-de300ebcfb17?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
+    photo: 'https://images.unsplash.com/photo-1530394168616-16a229c8c12e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
   },
   {
-    name: 'Gusya',
+    name: 'Johny',
     breed: 'Mau',
-    photo: 'https://images.unsplash.com/photo-1521673461164-de300ebcfb17?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
+    photo: 'https://images.unsplash.com/photo-1505628346881-b72b27e84530?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
+  },
+  {
+    name: 'Leo',
+    breed: 'Mau',
+    photo: 'https://images.unsplash.com/photo-1544568100-847a948585b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80'
   }
 ]
 
@@ -67,6 +69,4 @@ const Navigator = createStackNavigator({
   headerMode: 'none'
 })
 
-const StackNavigator = createAppContainer(Navigator);
-
-export default StackNavigator;
+export default Navigator;

@@ -13,7 +13,7 @@ const All = ({ entries }) => {
                     numColumns={3}
                     data={entries}
                     snapToAlignment="center"
-                    ItemSeparatorComponent={() => <View style={{margin: 10}} />}
+                    ItemSeparatorComponent={() => <View style={{margin: 8}} />}
                     keyExtractor={dog => dog.name}
                     renderItem={({ item }) => (
                         <Card source={{uri: item.photo}}>
