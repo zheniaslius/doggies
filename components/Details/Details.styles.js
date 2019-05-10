@@ -1,4 +1,4 @@
-import { View, Text, TouchableHighlight } from 'react-native';
+import { View, Text } from 'react-native';
 import styled, { css } from 'styled-components';
 import { Name, GlobalText } from '../shared/shared';
 
@@ -12,19 +12,6 @@ export const Container = styled(View)`
 export const NameDark = styled(Name)`
   color: ${props => props.theme.black};
   margin-bottom: 25px;
-`;
-
-export const Call = styled(View)`
-  border-radius: 50;
-  background-color: white;
-  height: 60;
-  width: 60;
-  align-self: flex-end;
-  position: absolute;
-  right: 30px;
-  elevation: 5;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const InfoWrapper = styled(View)`
@@ -61,19 +48,4 @@ export const Description = styled(Text)`
   line-height: 23;
   margin-bottom: 25px;
   color: #7e7f86;
-`;
-
-export const Button = styled(TouchableHighlight)`
-  background-color: #8ae1f3;
-  border-radius: 10px;
-  flex: 1;
-  height: 50px;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const ButtonText = styled(GlobalText)`
-  font-weight: bold;
-  color: white;
-  font-size: 16px;
 `;

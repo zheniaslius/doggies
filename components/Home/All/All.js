@@ -14,6 +14,7 @@ const All = ({ entries }) => {
                     data={entries}
                     snapToAlignment="center"
                     ItemSeparatorComponent={() => <View style={{margin: 8}} />}
+                    ListFooterComponent={() => <View style={{paddingTop: 10}} />}
                     keyExtractor={dog => dog.name}
                     renderItem={({ item }) => (
                         <Card source={{uri: item.photo}}>

@@ -10,10 +10,9 @@ import {
   Title,
   Value,
   Description,
-  Button,
-  ButtonText,
-  Call
 } from './Details.styles';
+
+import { Action, Button, ButtonText } from '../shared/shared';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
@@ -27,21 +26,13 @@ const Details = ({ navigation }) => {
       <Image source={{uri: photo}} style={{width: viewportWidth, height: viewportHeight/2}} />
       <Container>
         <NameDark>{name}</NameDark>
-        <Call style={{transform: [{translateY: -30}]}}>
+        <Action style={{transform: [{translateY: -30}]}}>
           <Text><Icon name="phone" color="#8ae1f3" size={35} /></Text>
-        </Call>
+        </Action>
         <InfoWrapper>
           <Column noPadding>
             <Title>Порода</Title>
             <Value>{breed}</Value>
-          </Column>
-          <Column border>
-            <Title>Размер</Title>
-            <Value>Medium</Value>
-          </Column>
-          <Column>
-            <Title>Возраст</Title>
-            <Value>1 год</Value>
           </Column>
         </InfoWrapper>
         <Description>

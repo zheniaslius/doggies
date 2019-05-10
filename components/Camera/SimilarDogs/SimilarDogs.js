@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { Image, View, FlatList,
-ImageBackground, Text, ScrollView } from 'react-native';
+ImageBackground, Text, ScrollView,
+TouchableNativeFeedback, TouchableWithoutFeedback } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { Heading2 } from '../../shared/shared';
+import { Heading2, Action } from '../../shared/shared';
 
 import {
+  Wrapper,
+  ImageWrapper,
   Container,
   Card,
   Breed,
@@ -47,29 +51,40 @@ const entries = [
 class SimilarDogs extends Component {
   render() {
     const { navigation } = this.props;
-    const photo  = navigation.getParam('photo');
+    const photo = navigation.getParam('photo');
     
     return (
-      <View style={{flex: 1}}>
-        <Image source={{uri: photo.uri}} style={{flex: 1}}/>
+      <Wrapper>
+        <ImageWrapper>
+          <Image source={{uri: photo.uri}} style={{flex: 1}} />
+          <TouchableNativeFeedback onPress={() => this.props.navigation.navigate('Profile')}>
+            <Action style={{transform: [{translateY: 18}], bottom: 0, zIndex: 10}}>
+              <Text><Icon name="add" color="#8ae1f3" size={35} /></Text>
+            </Action>
+          </TouchableNativeFeedback>
+        </ImageWrapper>
         <Container>
-          <Heading2 style={{marginBottom: 10}}>Похожие</Heading2>
-          <ScrollView style={{marginRight: -10}}>
+          <Heading2 style={{marginBottom: 15}}>Похожие</Heading2>
+          <ScrollView style={{marginRight: -20}}>
             <FlatList
               data={entries}
               horizontal
+              showsHorizontalScrollIndicator={false}
+              ListFooterComponent={() => <View style={{marginLeft: 20}}/>}
               ItemSeparatorComponent={() => <View style={{marginHorizontal: 7}} />}
               keyExtractor={dog => dog.name}
               renderItem={({ item }) => (
-                  <Card source={{uri: item.photo}} style={{width: 100, height: 140, flexDirection: 'column', justifyContent: 'flex-end'}}>
+                <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Details', {...item})}>
+                  <Card source={{uri: item.photo}} style={{width: 110, height: 140, flexDirection: 'column', justifyContent: 'flex-end'}}>
                     <Breed>{item.breed}</Breed>
                     <Name>{item.name}</Name>
                   </Card>
+                </TouchableWithoutFeedback>
               )}
             />
           </ScrollView>
         </Container>
-      </View>
+      </Wrapper>
     )
   }
 }

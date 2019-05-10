@@ -6,7 +6,7 @@ export const SnapButton = styled(TouchableOpacity)`
   align-items: center;
   border-radius: 50;
   background-color: ${props => props.theme.blue};
-  height: 60;
-  width: 60;
-  margin-bottom: 30;
+  height: 70;
+  width: 70;
+  margin-bottom: 50;
 `;

@@ -1,10 +1,11 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View } from 'react-native';
 import { Camera, Permissions } from 'expo';
-import { withNavigationFocus, createStackNavigator, createAppContainer } from 'react-navigation';
+import { withNavigationFocus, createStackNavigator } from 'react-navigation';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import SimilarDogs from './SimilarDogs';
+import Details from '../Details';
 
 import {
   SnapButton
@@ -45,7 +46,7 @@ class CameraComponent extends React.Component {
         >
           <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'flex-end'}}>
             <SnapButton onPress={this.snap} >
-              <MaterialIcons name="dog" style={{fontSize: 28, color: 'white'}}/>
+              <MaterialIcons name="dog" style={{fontSize: 30, color: 'white'}}/>
             </SnapButton>
           </View>
         </Camera>
@@ -60,6 +61,9 @@ const Navigator = createStackNavigator({
   },
   SimilarDogs: {
     screen: SimilarDogs
+  },
+  Details: {
+    screen: Details
   }
 }, {
   initialRouteName: 'Camera',
