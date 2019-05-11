@@ -17,9 +17,8 @@ import { Action, Button, ButtonText } from '../shared/shared';
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
 const Details = ({ navigation }) => {
-  const name = navigation.getParam('name');
-  const photo = navigation.getParam('photo');
-  const breed = navigation.getParam('breed');
+  const dog = navigation.getParam('dog');
+  const { name, photo, breed } = dog;
 
   return (
     <ScrollView>

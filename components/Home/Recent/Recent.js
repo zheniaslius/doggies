@@ -16,7 +16,7 @@ import {
 const Recent = ({ entries, navigation }) => {
   renderItem = ({item}) => {
       return (
-        <TouchableNativeFeedback onPress={() => navigation.navigate('Details', {...item})}>
+        <TouchableNativeFeedback onPress={() => navigation.navigate('Details', {dog: item})}>
           <Card source={{uri: item.photo}} style={{height: slideHeight, marginRight: 20}}>
             <Breed>{ item.breed }</Breed>
             <Name>{ item.name }</Name>

@@ -1,17 +1,29 @@
 import { Router } from 'express';
 import multer from 'multer';
 
+import * as helpers from './helpers';
+
 const router = Router();
-const upload = multer({ dest: 'uploads/' });
+const storage = multer.memoryStorage();
+const upload = multer({ storage })
 
 router.get('/', async (req, res) => {
   const dogs = await req.context.models.Dog.find();
   return res.send(dogs);
 });
 
-router.get('/breed', upload.single('dog'), async (req, res) => {
-  const photo = req.file;
-  return res.send(photo);
+router.post('/similar', upload.single('dog'), async (req, res) => {
+  const photo = req.file.buffer.toString('base64');
+
+  const labels = await helpers.getLabels(photo);
+  const breeds = await helpers.getDogBreeds(labels);
+  const allBreeds = await helpers.getAllBreeds();
+ 
+  const similarBreeds = labels.filter(label => helpers.hasSimilarWord(label.description, breeds));
+  
+  const breedsDetected = await helpers.getBreedNameFromDB(similarBreeds, allBreeds);
+  const dogsWithSearchBreed = await req.context.models.Dog.findByBreed(breedsDetected);
+  res.send(dogsWithSearchBreed)
 });
 
 router.get('/:dogId', async (req, res) => {

@@ -73,8 +73,8 @@ class SimilarDogs extends Component {
               ListFooterComponent={() => <View style={{marginLeft: 20}}/>}
               ItemSeparatorComponent={() => <View style={{marginHorizontal: 7}} />}
               keyExtractor={dog => dog.name}
-              renderItem={({ item }) => (
-                <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Details', {...item})}>
+              renderItem={({ dog }) => (
+                <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Details', {dog})}>
                   <Card source={{uri: item.photo}} style={{width: 110, height: 140, flexDirection: 'column', justifyContent: 'flex-end'}}>
                     <Breed>{item.breed}</Breed>
                     <Name>{item.name}</Name>
