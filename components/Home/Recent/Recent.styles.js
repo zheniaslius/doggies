@@ -1,6 +1,6 @@
 import { Dimensions, ImageBackground } from 'react-native';
 import styled from 'styled-components';
-import { GlobalText } from '../../shared/shared';
+import { GlobalText } from '../../shared/components';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
@@ -21,7 +21,7 @@ export const Card = styled(ImageBackground)`
     overflow: hidden;
     height: slideHeight;
     justify-content: flex-end;
-    padding: 15px 20px;
+    padding: 15px 10px 15px 20px;
 `;
 
 export const Breed = styled(GlobalText)`

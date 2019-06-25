@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Image, Dimensions, ScrollView } from 'react-native';
+import { Text, Image, Dimensions, ScrollView, Linking } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {
@@ -12,9 +12,14 @@ import {
   Description,
 } from './Details.styles';
 
-import { Action, Button, ButtonText } from '../shared/shared';
+import { Action, Button, ButtonText } from '../shared/components';
+import { capitalize } from '../../helpers/helpers';
 
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
+
+const openPhoneApp = () => {
+  Linking.openURL('tel:+380678020295');
+}
 
 const Details = ({ navigation }) => {
   const dog = navigation.getParam('dog');
@@ -25,13 +30,13 @@ const Details = ({ navigation }) => {
       <Image source={{uri: photo}} style={{width: viewportWidth, height: viewportHeight/2}} />
       <Container>
         <NameDark>{name}</NameDark>
-        <Action style={{transform: [{translateY: -30}]}}>
+        <Action style={{transform: [{translateY: -30}]}} onPress={openPhoneApp}>
           <Text><Icon name="phone" color="#8ae1f3" size={35} /></Text>
         </Action>
         <InfoWrapper>
           <Column noPadding>
             <Title>Порода</Title>
-            <Value>{breed}</Value>
+            <Value>{capitalize(breed)}</Value>
           </Column>
         </InfoWrapper>
         <Description>

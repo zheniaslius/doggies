@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { View, Text, TouchableHighlight } from 'react-native';
+import { View, Text, TouchableHighlight, TouchableOpacity } from 'react-native';
 
 export const Container = styled(View)`
     padding: 45px 15px 0;
@@ -28,7 +28,7 @@ export const Name = styled(GlobalText)`
     color: white;
 `;
 
-export const Action = styled(View)`
+export const Action = styled(TouchableOpacity)`
   border-radius: 50;
   background-color: white;
   height: 60;

@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native';
 import styled, { css } from 'styled-components';
-import { Name, GlobalText } from '../shared/shared';
+import { Name, GlobalText } from '../shared/components';
 
 export const Container = styled(View)`
     padding: 25px 20px;

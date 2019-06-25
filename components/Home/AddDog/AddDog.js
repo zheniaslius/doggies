@@ -8,7 +8,7 @@ import axios from 'axios';
 import AutoComplete from 'react-native-autocomplete-input';
 
 import { Button, ButtonText,
-Heading2 } from '../../shared/shared';
+Heading2 } from '../../shared/components';
 
 import {
   FormContainer,
@@ -75,7 +75,7 @@ export default class AddDog extends React.Component {
             <IconContainer>
               <IconTitle>Фото</IconTitle>
               <TouchableOpacity onPress={this.handleChoosePhoto}>
-                <MCIcon name="file-upload" style={{fontSize: 30, color: '#8ae1f3'}}/>
+                <MCIcon name="file-upload" style={{fontSize: 40, color: '#8ae1f3'}}/>
               </TouchableOpacity>
             </IconContainer>
             <IconContainer>
@@ -83,11 +83,11 @@ export default class AddDog extends React.Component {
               <View style={{flexDirection: 'row'}}>
                 <TouchableOpacity onPress={() => this.setState({ gender: 'male' })}
                   style={{marginRight: 5, borderWidth: 1, borderRadius: 5, borderColor: this.state.gender === 'male' ? '#8ae1f3' : 'transparent'}}>
-                  <MCIcon name="gender-male" style={{fontSize: 30, color: '#8ae1f3'}}/>
+                  <MCIcon name="gender-male" style={{fontSize: 40, color: '#8ae1f3'}}/>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => this.setState({ gender: 'female' })} 
                   style={{borderWidth: 1, borderRadius: 5, borderColor: this.state.gender === 'female' ? '#8ae1f3' : 'transparent'}}>
-                  <MCIcon name="gender-female" style={{fontSize: 30, color: '#8ae1f3'}}/>
+                  <MCIcon name="gender-female" style={{fontSize: 40, color: '#8ae1f3'}}/>
                 </TouchableOpacity>
               </View>
             </IconContainer>
@@ -125,6 +125,10 @@ export default class AddDog extends React.Component {
             </View>
             <Input
               label='Описание'
+              containerStyle={{marginBottom: 10}}
+            />
+            <Input
+              label='Номер телефона'
               containerStyle={{marginBottom: 10}}
             />
           </View>

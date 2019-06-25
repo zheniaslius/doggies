@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Container } from '../../shared/shared';
+import { Container } from '../../shared/components';
 
 import { View, Text } from 'react-native';
 

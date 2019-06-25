@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, ActivityIndicator } from 'react-native';
 import { Camera, Permissions } from 'expo';
 import { withNavigationFocus, createStackNavigator } from 'react-navigation';
 import MaterialIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -14,6 +14,7 @@ import {
 class CameraComponent extends React.Component {
   state = {
     hasCameraPermission: null,
+    loading: false
   };
 
   async componentDidMount() {
@@ -22,15 +23,18 @@ class CameraComponent extends React.Component {
   }
 
   snap = async () => {
+    this.setState({loading: true});
     if (this.cam) {
       const photo = await this.cam.takePictureAsync();
+      
       const { navigate } = this.props.navigation;
       navigate('SimilarDogs', {photo});
+      this.setState({loading: false});
     }
   }
 
   render() {
-    const { hasCameraPermission } = this.state;
+    const { hasCameraPermission, loading } = this.state;
     const { isFocused } = this.props;
 
     if (!isFocused) return null;
@@ -45,8 +49,11 @@ class CameraComponent extends React.Component {
           ratio="16:9"
         >
           <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center', alignItems: 'flex-end'}}>
-            <SnapButton onPress={this.snap} >
-              <MaterialIcons name="dog" style={{fontSize: 30, color: 'white'}}/>
+            <SnapButton onPress={this.snap}>
+              {loading
+              ? <ActivityIndicator size="large" color="white" />
+              : <MaterialIcons name="dog" style={{fontSize: 30, color: 'white'}}/>
+              }
             </SnapButton>
           </View>
         </Camera>
